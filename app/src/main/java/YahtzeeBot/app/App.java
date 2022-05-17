@@ -4,12 +4,15 @@
 package YahtzeeBot.app;
 
 import java.util.Scanner;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
 public class App {
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
         System.out.println("Enter number of players:");
-        int playerCount = scnr.nextInt();
+        int playerCount = Integer.valueOf(scnr.nextLine());
         int turnNum = 0;
 
         Player[] players = new Player[playerCount];
@@ -18,14 +21,28 @@ public class App {
             p = new Player(++playerNum);
         }
 
-        Die[] roll = new Die[5];
         while (turnNum < 13) {
+            turnNum++;
+            System.out.println("Turn number " + turnNum);
             for(Player p : players){
-                turnNum++;
-                System.out.println("Turn number " + turnNum);
-                game.getRoll(roll);
+                Roll roll = new Roll();
+                for(int i = 0; i < 2; i ++){
+                    roll.roll();
+                    System.out.println("Roll " + ( i + 1) );
+                    Printer.printRoll(roll);
+                    System.out.println("Enter indices of dice you would like to keep: ");
+                    String input = scnr.nextLine();
+                    for(int j = 0; j < roll.dice.length; j++){
+                        if(input.contains(Integer.toString(j)))
+                            roll.dice[j].keep = true;
+                    }
+                }   
+                roll.roll();
+                Printer.printRoll(roll);
+                Printer.printOptions();
+                char input = scnr.nextLine().charAt(0);
+                System.out.println(game.assignPoints(roll, input));
                 
-
             }
             
 

@@ -5,10 +5,12 @@ public class Die {
   boolean keep;
 
   public Die(){
-
+    this.keep=false;
   }
 
   public void roll(){
-    this.val = (int)(Math.random()*6)+1;
+    if(!keep)
+      this.val = (int)(Math.random()*6)+1;
+    this.keep = false;
   }
 }
