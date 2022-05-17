@@ -1,4 +1,4 @@
-package YahtzeeBot.app;
+package YahtzeeBot.app.game;
 
 public class Player {
   public int playerNum;

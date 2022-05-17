@@ -1,7 +1,7 @@
-package YahtzeeBot.app;
+package YahtzeeBot.app.game;
 
 public class Roll {
-  Die[] dice;
+  public Die[] dice;
 
   public Roll(){
     dice = new Die[5];

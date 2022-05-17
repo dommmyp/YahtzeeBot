@@ -1,7 +1,7 @@
-package YahtzeeBot.app;
+package YahtzeeBot.app.game;
 
 public class Die {
-  int val;
+  public int val;
   boolean keep;
 
   public Die(){

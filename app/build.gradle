@@ -8,6 +8,6 @@ compileJava { options.debug = false }
 
 jar { 
     manifest { 
-        attributes( 'Main-Class': 'YahtzeeBot.app.App' ) 
+        attributes( 'Main-Class': 'YahtzeeBot.app.game.App' ) 
     } 
 }
