@@ -17,14 +17,15 @@ public class App {
 
         Player[] players = new Player[playerCount];
         int playerNum = 0;
-        for (Player p : players) {
-            p = new Player(++playerNum);
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new Player(++playerNum);
         }
 
         while (turnNum < 13) {
             turnNum++;
             System.out.println("Turn number " + turnNum);
             for(Player p : players){
+                System.out.println(p.playerNum);
                 Roll roll = new Roll();
                 for(int i = 0; i < 2; i ++){
                     roll.roll();
@@ -40,8 +41,17 @@ public class App {
                 roll.roll();
                 Printer.printRoll(roll);
                 Printer.printOptions();
-                char input = scnr.nextLine().charAt(0);
-                System.out.println(game.assignPoints(roll, input));
+                char input = ' ';
+                while(true){
+                    input = scnr.nextLine().charAt(0);
+                    if(!p.open[game.inputList.indexOf(Character.toString(input))])
+                        System.out.println("already used, please try again");
+                    else
+                        break;
+                }
+                int points = game.getPoints(roll, input);
+                game.assignPoints(input, p, points);
+                Printer.printScore(p);
                 
             }
             

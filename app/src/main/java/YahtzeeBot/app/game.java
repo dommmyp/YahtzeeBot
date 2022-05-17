@@ -3,15 +3,16 @@ package YahtzeeBot.app;
 import java.util.Scanner;
 
 public class game {
+  public static String inputList = "123456abfslyc";
   
-
+  
   public static void getRoll(Die[] roll){
     for(Die r : roll){
       r.roll();
     }
   }
 
-  public static int assignPoints(Roll dice, char input) {
+  public static int getPoints(Roll dice, char input) {
     int[] roll = new int[5];
     for(int i = 0; i < roll.length; i++)
       roll[i] = dice.dice[i].val;
@@ -76,5 +77,13 @@ public class game {
     }
     return turnPoints;
   }
-
+  
+  
+  public static void assignPoints(char input, Player p, int score){
+    int index = inputList.indexOf(Character.toString(input));
+    p.score[index] = score;
+    p.open[index] = false;
+  
+    
+  }
 }
