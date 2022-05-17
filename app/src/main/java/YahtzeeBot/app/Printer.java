@@ -3,17 +3,22 @@ package YahtzeeBot.app;
 public class Printer {
 
   public static void printScore(Player p) {
-    for (int x : p.score) {
-      System.out.print(x + " ");
-    }
+    for(int i = 0; i < game.inputList.length(); i++)
+      System.out.print(game.inputList.charAt(i)+" ");
+
     System.out.println();
 
+    for (int x : p.score)
+      System.out.print(x + " ");
+
+    System.out.println();
   }
 
   public static void printRoll(Roll roll) {
     for (int i = 0; i < roll.dice.length; i++) {
-      System.out.println(i + ": " + roll.dice[i].val + " ");
+      System.out.print(roll.dice[i].val + " ");
     }
+    System.out.println("\n");
   }
 
   public static void printOptions() {
