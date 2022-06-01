@@ -13,45 +13,6 @@ public class game {
     }
   }
 
-  public static int getOptionInput(Player p, Scanner scnr, Roll roll){
-    Expect e = new Expect();
-    if(p.playerNum == 1){
-      char input = ' ';
-      // Printer.printOptions();
-      System.out.println("Enter option:");
-      while(true){
-          input = scnr.nextLine().charAt(0);
-          if(!p.open[game.inputList.indexOf(Character.toString(input))])
-              System.out.println("already used, please try again");
-          else
-              break;
-      }
-      return game.inputList.indexOf(Character.toString(input));
-    } else {
-      return e.getExpect(roll, 3);
-
-    }
-  }
-
-  public static void getRollInput(Roll roll, Player p, int turnNum, Scanner scnr){
-    if(p.playerNum == 1){
-      System.out.println("Enter indices of dice you would like to keep: ");
-      String input = "x";
-      input = scnr.nextLine();
-      if(input.equals("quit"))
-        System.exit(0);
-      for(int j = 0; j < roll.dice.length; j++){
-          if(input.contains(Integer.toString(j+1)))
-              roll.dice[j].keep = true;
-      }
-    } else {
-      //get bot input
-
-    }
-
-
-  }
-
   public static int getPoints(Roll dice, int input) {
     int[] roll = new int[5];
     for(int i = 0; i < roll.length; i++)
@@ -123,6 +84,5 @@ public class game {
     p.score[index] = score;
     p.open[index] = false;
   
-    
   }
 }

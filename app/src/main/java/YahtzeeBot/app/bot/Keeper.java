@@ -3,66 +3,6 @@ package YahtzeeBot.app.bot;
 public class Keeper {
   public static int multiNum = -1;
 
-  public static String getKeepers(Bot bot, int index, int[] roll){
-    switch (bot) {
-      case RAND:
-        break;
-      case EXPECT:
-        return getKeepersExpect(index, roll);
-      case TOTAL:
-        break;
-      default:
-        System.exit(0);
-    }
-    return null;
-  }
-
-  public static String getKeepersExpect(int index, int[] roll) {
-    int[] rollCopy = roll;
-    String returnval = "";
-    switch (index) {
-      case 0:
-        System.out.println("1");
-        returnval = getNumber(1, roll);
-      case 1:
-        System.out.println("2");
-        returnval = getNumber(2, roll);
-      case 2:
-        System.out.println("3");
-        returnval = getNumber(3, roll);
-      case 3:
-        System.out.println("4");
-        returnval = getNumber(4, roll);
-      case 4:
-        System.out.println("5");
-        returnval = getNumber(5, roll);
-      case 5:
-        System.out.println("6");
-        returnval = getNumber(6, roll);
-      case 6:
-        System.out.println("y");
-        returnval = getYahtzee(roll);
-      case 7:
-        System.out.println("f");
-        returnval = getFullHouse(roll);
-      case 8:
-        System.out.println("a");
-        returnval = getMulti(roll);
-      case 9:
-        System.out.println("b");
-        returnval = getMulti(roll);
-      case 10:
-        System.out.println("s");
-        returnval = getStraight(rollCopy);
-      case 11:
-        System.out.println("l");
-        returnval = getStraight(rollCopy);
-      default:
-        break;
-    }
-    return returnval;
-  }
-
   public static String getNumber(int num, int[] roll) {
     String keepers = "";
     for (int i = 0; i < 5; i++) {

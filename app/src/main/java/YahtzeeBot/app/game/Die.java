@@ -2,7 +2,7 @@ package YahtzeeBot.app.game;
 
 public class Die {
   public int val;
-  boolean keep;
+  public boolean keep;
 
   public Die(){
     this.keep=false;

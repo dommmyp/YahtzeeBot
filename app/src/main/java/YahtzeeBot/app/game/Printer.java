@@ -18,6 +18,7 @@ public class Printer {
     System.out.println();
   }
 
+
   public static void printOptions() {
     System.out.println("Enter category to use points for\n" +
         "1s - 1\n" +

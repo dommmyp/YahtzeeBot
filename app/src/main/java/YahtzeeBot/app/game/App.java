@@ -8,25 +8,29 @@ public class App {
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
         Printer.printWelcome();
-
         System.out.print(Printer.ANSI_GREEN+"Number of players: ");
         int playerCount = Integer.valueOf(scnr.nextLine());
 
-        Bot b = null;
-        if(playerCount > 1){
-            System.out.print("Bot type (RAND, EXPECT, TOTAL): ");
+
+        Player[] players = new Player[playerCount];
+                    
+        for(int i = 0; i < playerCount; i++){
+            System.out.print("Player " + (i+1) + " type (PERSON, MAXVAL, EXPECT, TOTAL): ");
             String botInput = scnr.nextLine();
             switch(botInput.toLowerCase()){
-                case "rand":
-                    b = Bot.RAND;
+                case "person":
+                    System.out.println("Person selected");
+                    players[i] = new Person(i+1);
+                    break;
+                case "maxval":
                     System.out.println("Random bot selected");
+                    players[i] = new MaxValBot(i+1);
                     break;
                 case "expect":
-                    b = Bot.EXPECT;
                     System.out.println("Expectation based bot selected");
+                    players[i] = new ExpectBot(i+1);
                     break;
                 case "total":
-                    b = Bot.TOTAL;
                     System.out.println("Fully optimized bot selected");
                     break;
                 default:
@@ -37,12 +41,6 @@ public class App {
         }
 
         int turnNum = 0;
-
-        Player[] players = new Player[playerCount];
-        int playerNum = 0;
-        for (int i = 0; i < players.length; i++) {
-            players[i] = new Player(++playerNum);
-        }
 
         System.out.println("\n\n");
         while (turnNum < 13) {
@@ -56,12 +54,12 @@ public class App {
                     System.out.println("\nRoll " + (i + 1) );
                     Printer.printRoll(roll);
                     
-                    game.getRollInput(roll, p, i+1, scnr);
+                    p.getKeepers(roll, i);
                 }   
                 System.out.println("Roll 3");
                 roll.roll();
                 Printer.printRoll(roll);
-                int input = game.getOptionInput(p, scnr, roll);
+                int input = p.getHand(roll, 3);
                 
                 int points = game.getPoints(roll, input);
                 System.out.println(points);

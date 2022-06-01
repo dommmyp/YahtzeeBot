@@ -5,7 +5,6 @@ public class Player {
   public int[] score;
   public boolean[] open;
 
-  
   public Player(int num){
     this.playerNum = num;
     this.score = new int[13];
@@ -15,5 +14,12 @@ public class Player {
       this.open[i] = true;
     }
   }
+
+  public void getKeepers(Roll roll, int rollNum){}
+
+  public int getHand(Roll dice, int rollNum){
+    return 0;
+  }
+
 
 }
