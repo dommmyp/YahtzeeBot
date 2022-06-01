@@ -1,5 +1,17 @@
 package YahtzeeBot.app.game;
 
+
+/*
+  Class to get the final score of a roll based on the selected option.
+
+  Calculates for:
+    Three of a kind,
+    Four of a kind,
+    Full house,
+    Small straight,
+    Large straight,
+    yahtzee
+*/
 public class ScoreGetter {
 
   public static int ThreeOfAKind(int[] roll){

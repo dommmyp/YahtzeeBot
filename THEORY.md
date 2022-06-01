@@ -1,0 +1,1 @@
+The basis of the optimization here is to find the relative probability of each result based on the current dice rolled and compare that to the base probability of each result. After each roll we compare the values $P(X_i|Current Dice)-P(X_i)$ for each result i.

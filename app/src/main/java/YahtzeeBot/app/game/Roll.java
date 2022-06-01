@@ -1,5 +1,8 @@
 package YahtzeeBot.app.game;
-
+/*
+  Class to encompass the dice in a roll.
+    roll function rolls eah die 
+*/
 public class Roll {
   public Die[] dice;
 

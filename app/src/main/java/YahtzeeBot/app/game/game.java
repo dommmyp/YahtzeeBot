@@ -38,12 +38,14 @@ public class game {
       System.out.println("Enter indices of dice you would like to keep: ");
       String input = "x";
       input = scnr.nextLine();
+      if(input.equals("quit"))
+        System.exit(0);
       for(int j = 0; j < roll.dice.length; j++){
           if(input.contains(Integer.toString(j+1)))
               roll.dice[j].keep = true;
       }
     } else {
-
+      //get bot input
 
     }
 
@@ -55,7 +57,7 @@ public class game {
     for(int i = 0; i < roll.length; i++)
       roll[i] = dice.dice[i].val;
     int turnPoints = 0;
-    switch (input) {
+    switch (input+1) {
       case 1:
         for (int die : roll)
           if (die == 1)

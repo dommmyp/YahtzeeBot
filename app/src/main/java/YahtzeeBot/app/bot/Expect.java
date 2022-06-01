@@ -217,16 +217,16 @@ public class Expect {
       while(count++<1000){
         tempList=Arrays.copyOf(roll, roll.length);
         int[] newRoll = new int[5];
-        if(rollNum==1){
-          newRoll=Keeper.simSmallStraight(tempList);
-          newRoll=Keeper.simSmallStraight(newRoll);
-        }
-        if(rollNum==2){
-          newRoll=Keeper.simSmallStraight(tempList);
-        }
-        if(rollNum==3){
+        // if(rollNum==1){
+        //   newRoll=Keeper.simSmallStraight(tempList);
+        //   newRoll=Keeper.simSmallStraight(newRoll);
+        // }
+        // if(rollNum==2){
+        //   newRoll=Keeper.simSmallStraight(tempList);
+        // }
+        // if(rollNum==3){
           newRoll=tempList;
-        }
+        // }
         if(length==1)
           straightAmt+=ScoreGetter.smallStraight(newRoll);
         if(length==2)
