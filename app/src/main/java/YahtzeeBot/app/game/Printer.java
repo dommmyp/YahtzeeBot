@@ -6,16 +6,35 @@ package YahtzeeBot.app.game;
 
 public class Printer {
 
-  public static void printScore(Player p) {
-    for(int i = 0; i < game.inputList.length(); i++)
-      System.out.print(game.inputList.charAt(i)+" ");
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_BLUE = "\u001B[34m";
+  public static final String ANSI_PURPLE = "\u001B[35m";
+  public static final String ANSI_CYAN = "\u001B[36m";
+  public static final String ANSI_WHITE = "\u001B[37m";
+  public static final String[] colors = {ANSI_PURPLE, ANSI_BLUE, ANSI_CYAN, ANSI_GREEN};
 
-    System.out.println();
 
-    for (int x : p.score)
-      System.out.print(x + " ");
+  public static void printScore(Player p){
+    System.out.println("Upper Section");
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[0] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Aces",colors[(p.playerNum+2)%3], p.score[0]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[1] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Twos", colors[(p.playerNum+2)%3], p.score[1]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[2] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Threes", colors[(p.playerNum+2)%3], p.score[2]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[3] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Fours", colors[(p.playerNum+2)%3], p.score[3]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[4] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Fives", colors[(p.playerNum+2)%3], p.score[4]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[5] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Sixes", colors[(p.playerNum+2)%3], p.score[5]);
+    System.out.printf("|Upper Section Total|%3s|\n", p.sumTop());
+    System.out.printf("|%s%15s%s|%3s|\n", !p.open[6] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Three of a Kind", colors[(p.playerNum+2)%3], p.score[6]);
+    System.out.printf("|%s%15s%s|%3s|\n", !p.open[7] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Four of a Kind", colors[(p.playerNum+2)%3], p.score[7]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[8] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Full House", colors[(p.playerNum+2)%3], p.score[8]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[9] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Sm Straight", colors[(p.playerNum+2)%3], p.score[9]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[10] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Lg Straight", colors[(p.playerNum+2)%3], p.score[10]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[11] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Yahtzee", colors[(p.playerNum+2)%3], p.score[11]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[12] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Chance", colors[(p.playerNum+2)%3], p.score[12]);
+    System.out.printf("|Lower Section Total|%3s|\n", p.sumBottom());
+    System.out.printf("| Total|%3s|\n", p.sumScores());
 
-    System.out.println();
   }
 
 
@@ -92,13 +111,6 @@ public class Printer {
 
 
   }
-
-  public static final String ANSI_RESET = "\u001B[0m";
-  public static final String ANSI_GREEN = "\u001B[32m";
-  public static final String ANSI_BLUE = "\u001B[34m";
-  public static final String ANSI_PURPLE = "\u001B[35m";
-  public static final String ANSI_CYAN = "\u001B[36m";
-  public static final String[] colors = {ANSI_PURPLE, ANSI_BLUE, ANSI_CYAN, ANSI_GREEN};
 
   public static String dice = 
     "\t       .-------.    ______\n"+

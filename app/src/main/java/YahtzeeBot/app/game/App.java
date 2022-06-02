@@ -34,8 +34,8 @@ public class App {
                     System.out.println("Fully optimized bot selected");
                     break;
                 default:
-                    System.out.println("Invalid bot type... Quitting Program");
-                    System.exit(0);
+                    System.out.println("Invalid bot type... Please Reenter");
+                    i--;
                     break;
             }
         }

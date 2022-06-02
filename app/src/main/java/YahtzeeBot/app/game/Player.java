@@ -21,5 +21,27 @@ public class Player {
     return 0;
   }
 
+  public int sumTop(){
+    int sum = 0;
+    for(int i = 0; i < 6; i++){
+      sum += score[i];
+    }
+    return sum;
+  }
+  public int sumBottom(){
+    int sum = 0;
+    for(int i = 6; i < score.length; i++){
+      sum += score[i];
+    }
+    return sum;
+  }
+
+  public int sumScores(){
+    int sum = 0;
+    for(int i = 0; i < score.length; i++){
+      sum += score[i];
+    }
+    return sum;
+  }
 
 }
