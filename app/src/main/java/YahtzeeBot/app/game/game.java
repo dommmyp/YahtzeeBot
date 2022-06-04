@@ -20,40 +20,28 @@ public class game {
     int turnPoints = 0;
     switch (input+1) {
       case 1:
-        for (int die : roll)
-          if (die == 1)
-            turnPoints += die;
+        turnPoints = ScoreGetter.multiples(roll, 1);
         break;
       case 2:
-        for (int die : roll)
-          if (die == 2) 
-            turnPoints += die;
+        turnPoints = ScoreGetter.multiples(roll, 2);
         break;
       case 3:
-        for (int die : roll) 
-          if (die == 3)
-            turnPoints += die;
+        turnPoints = ScoreGetter.multiples(roll, 3);
         break;
       case 4:
-        for (int die : roll)
-          if (die == 4)
-            turnPoints += die;
+        turnPoints = ScoreGetter.multiples(roll, 4);
         break;
       case 5:
-        for (int die : roll)
-          if (die == 5)
-            turnPoints += die;
+        turnPoints = ScoreGetter.multiples(roll, 5);
         break;
       case 6:
-        for (int die : roll)
-          if (die == 6)
-            turnPoints += die;
+        turnPoints = ScoreGetter.multiples(roll, 6);
         break;
       case 7:
-        turnPoints = ScoreGetter.ThreeOfAKind(roll);
+        turnPoints = ScoreGetter.threeOfAKind(roll);
         break;
       case 8:
-        turnPoints = ScoreGetter.FourOfAKind(roll);
+        turnPoints = ScoreGetter.fourOfAKind(roll);
         break;
       case 9:
         turnPoints = ScoreGetter.fullHouse(roll);

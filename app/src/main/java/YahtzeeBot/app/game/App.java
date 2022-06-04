@@ -15,7 +15,7 @@ public class App {
         Player[] players = new Player[playerCount];
                     
         for(int i = 0; i < playerCount; i++){
-            System.out.print("Player " + (i+1) + " type (PERSON, MAXVAL, EXPECT, TOTAL): ");
+            System.out.print("Player " + (i+1) + " type [PERSON, MAXVAL, EXPECT, FORCE, TOTAL]: ");
             String botInput = scnr.nextLine();
             switch(botInput.toLowerCase()){
                 case "person":
@@ -30,11 +30,15 @@ public class App {
                     System.out.println("Expectation based bot selected");
                     players[i] = new ExpectBot(i+1);
                     break;
+                case "force":
+                    System.out.println("Brute Force bot selected");
+                    players[i] = new ForceBot(i+1);
+                    break;
                 case "total":
                     System.out.println("Fully optimized bot selected");
                     break;
                 default:
-                    System.out.println("Invalid bot type... Please Reenter");
+                    System.out.println("Invalid bot type... Please enter again");
                     i--;
                     break;
             }
@@ -53,7 +57,6 @@ public class App {
                     roll.roll();
                     System.out.println("\nRoll " + (i + 1) );
                     Printer.printRoll(roll);
-                    
                     p.getKeepers(roll, i);
                 }   
                 System.out.println("Roll 3");

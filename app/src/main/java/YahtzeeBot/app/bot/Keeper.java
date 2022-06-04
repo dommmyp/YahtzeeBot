@@ -81,9 +81,9 @@ public class Keeper {
     for(int i = 0; i < roll.length; i++)
       c[roll[i]-1] = true;
     
-    int consec = 2;
+    int consec = 0;
     int currNum = 2;
-    String[] indices = new String[3];
+    String[] indices = {"", "", ""};
     int stringIndex = 0;
     for(int i = 1; i <=6 ; i++){
       for(int j = 0; j < roll.length; j++){

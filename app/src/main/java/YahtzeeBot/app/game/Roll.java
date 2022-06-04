@@ -18,4 +18,12 @@ public class Roll {
       d.roll();
   }
 
+  public int[] getNums(){
+    int[] nums = new int[5];
+    for(int i = 0; i < 5; i++){
+      nums[i]=dice[i].val;
+    }
+    return nums;
+  }
+
 }

@@ -17,9 +17,7 @@ public class Player {
 
   public void getKeepers(Roll roll, int rollNum){}
 
-  public int getHand(Roll dice, int rollNum){
-    return 0;
-  }
+  public int getHand(Roll dice, int rollNum){return 0;}
 
   public int sumTop(){
     int sum = 0;

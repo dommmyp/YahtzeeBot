@@ -6,15 +6,15 @@ import YahtzeeBot.app.game.*;
 
 public class Expect {
 
-  public double[] expect;
-  public double[] baseExpect = {2.1 + 1/21*(35), 4.2 + 2/21*(35), 6.3 + 3/21*(35), 8.4 + 4/21*(35), 10.5 + 5/21*(35), 12.6 + 6/21*(35),  3.9, 7.53, 13.35, 5.31, 15.417, 7.8};
+ 
+  public static final double[] baseExpect = {2.1 + 1/21*(35), 4.2 + 2/21*(35), 6.3 + 3/21*(35), 8.4 + 4/21*(35), 10.5 + 5/21*(35), 12.6 + 6/21*(35),  3.9, 7.53, 13.35, 5.31, 15.417, 7.8};
 
-  public Expect() {expect = new double[12];}
-
-  public int getExpect(Roll dice, int rollNum) {
+  public static int getExpect(int[] dice, int rollNum) {
     int[] roll = new int[5];
-    for(int i = 0; i < dice.dice.length; i++)
-      roll[i] = dice.dice[i].val;
+    for(int i = 0; i < dice.length; i++)
+      roll[i] = dice[i];
+
+    double[] expect = new double[13];
       
     expect[0] = expectNum(roll, 1, rollNum);
     expect[1] = expectNum(roll, 2, rollNum);

@@ -14,7 +14,15 @@ package YahtzeeBot.app.game;
 */
 public class ScoreGetter {
 
-  public static int ThreeOfAKind(int[] roll){
+  public static int multiples(int[] roll, int num){
+    int total = 0;
+    for (int die : roll) 
+      if (die == num)
+        total += die;
+    return total;
+  }
+
+  public static int threeOfAKind(int[] roll){
     for(int i = 1; i<=6; i++){
       int rollTotal=0;
       int numCount=0;
@@ -28,7 +36,7 @@ public class ScoreGetter {
   }
 
 
-  public static int FourOfAKind(int[] roll){
+  public static int fourOfAKind(int[] roll){
     for(int i = 1; i<=6; i++){
       int rollTotal=0;
       int numCount=0;
@@ -89,6 +97,14 @@ public class ScoreGetter {
       if(numCount==5)return 50;
     }
     return 0;
+  }
+
+  public static int chance(int[] roll){
+    int total = 0;
+    for(int die : roll){
+      total += die;
+    }
+    return total;
   }
   
 }
