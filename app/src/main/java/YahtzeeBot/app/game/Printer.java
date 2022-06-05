@@ -17,6 +17,7 @@ public class Printer {
 
 
   public static void printScore(Player p){
+    System.out.print(colors[(p.playerNum+2)%3]);
     System.out.println("Upper Section");
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[0] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Aces",colors[(p.playerNum+2)%3], p.score[0]);
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[1] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Twos", colors[(p.playerNum+2)%3], p.score[1]);
@@ -25,6 +26,7 @@ public class Printer {
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[4] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Fives", colors[(p.playerNum+2)%3], p.score[4]);
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[5] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Sixes", colors[(p.playerNum+2)%3], p.score[5]);
     System.out.printf("|Upper Section Total|%3s|\n", p.sumTop());
+    System.out.printf("|Upper Section Bonus|%3s|\n", p.sumTop() >= 63? 35 : 0);
     System.out.printf("|%s%15s%s|%3s|\n", !p.open[6] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Three of a Kind", colors[(p.playerNum+2)%3], p.score[6]);
     System.out.printf("|%s%15s%s|%3s|\n", !p.open[7] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Four of a Kind", colors[(p.playerNum+2)%3], p.score[7]);
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[8] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Full House", colors[(p.playerNum+2)%3], p.score[8]);
@@ -32,6 +34,9 @@ public class Printer {
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[10] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Lg Straight", colors[(p.playerNum+2)%3], p.score[10]);
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[11] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Yahtzee", colors[(p.playerNum+2)%3], p.score[11]);
     System.out.printf("| %s%13s%s |%3s|\n", !p.open[12] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Chance", colors[(p.playerNum+2)%3], p.score[12]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[13] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Yahtzee B1", colors[(p.playerNum+2)%3], p.score[13]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[14] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Yahtzee B2", colors[(p.playerNum+2)%3], p.score[14]);
+    System.out.printf("| %s%13s%s |%3s|\n", !p.open[15] ? ANSI_WHITE : colors[(p.playerNum+2)%3], "Yahtzee B3", colors[(p.playerNum+2)%3], p.score[15]);
     System.out.printf("|Lower Section Total|%3s|\n", p.sumBottom());
     System.out.printf("| Total|%3s|\n", p.sumScores());
 

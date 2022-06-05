@@ -2,7 +2,7 @@ package YahtzeeBot.app.bot;
 import YahtzeeBot.app.game.*;
 
 public class ExpectBot extends Player{
-  public static final double[] baseExpect = {2.1 + 1/21*(35), 4.2 + 2/21*(35), 6.3 + 3/21*(35), 8.4 + 4/21*(35), 10.5 + 5/21*(35), 12.6 + 6/21*(35),  3.9, 7.53, 13.35, 5.31, 15.417, 7.8, 18};
+  public static final double[] baseExpect = {2.1 + 1/21*(35), 4.2 + 2/21*(35), 6.3 + 3/21*(35), 8.4 + 4/21*(35), 10.5 + 5/21*(35), 12.6 + 6/21*(35),  18, 15, 15, 20, 25, 13, 26, 20, 20, 20 };
 
   
   public ExpectBot(int num){

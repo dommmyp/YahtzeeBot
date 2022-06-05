@@ -60,7 +60,14 @@ public class game {
           turnPoints += roll[i];
         break;
       case 14:
-        System.exit(0);
+        turnPoints = 2 * ScoreGetter.yahtzee(roll);
+        break;
+      case 15:
+        turnPoints = 2 * ScoreGetter.yahtzee(roll);
+        break;
+      case 16:
+        turnPoints = 2 * ScoreGetter.yahtzee(roll);
+        break;
       default:
         break;
     }
@@ -69,8 +76,15 @@ public class game {
   
   
   public static void assignPoints(int index, Player p, int score){
-    p.score[index] = score;
-    p.open[index] = false;
+    if(index > 12 && !p.open[11]){
+
+      
+      
+    } else{
+
+      p.score[index] = score;
+      p.open[index] = false;
+    }
   
   }
 }

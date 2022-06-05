@@ -7,9 +7,9 @@ public class Player {
 
   public Player(int num){
     this.playerNum = num;
-    this.score = new int[13];
-    this.open = new boolean[13];
-    for(int i = 0; i < 13; i++){
+    this.score = new int[16];
+    this.open = new boolean[16];
+    for(int i = 0; i < 16; i++){
       this.score[i]=0;
       this.open[i] = true;
     }
@@ -38,6 +38,9 @@ public class Player {
     int sum = 0;
     for(int i = 0; i < score.length; i++){
       sum += score[i];
+    }
+    if(sumTop()>=63){
+      sum+=35;
     }
     return sum;
   }

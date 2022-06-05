@@ -11,16 +11,18 @@ public class ForceBot extends Player{
   public void getKeepers(Roll dice, int rollNum){
     boolean[] keepers = ForceHelper.getBestKeepers(dice.getNums(), rollNum, this);
     for(int j = 0; j < dice.dice.length; j++){
+      System.out.print(keepers[j]+" ");
       if(keepers[j])
         dice.dice[j].keep = true;
     }
+    System.out.println();
   }
 
   public int getHand(Roll dice, int rollNum) {
     int[] roll = new int[5];
     for(int i = 0; i < dice.dice.length; i++)
       roll[i] = dice.dice[i].val;
-    double[] scores = new double[13];
+    double[] scores = new double[16];
       
     scores[0] = ScoreGetter.multiples(roll, 1);
     scores[1] = ScoreGetter.multiples(roll, 2);
@@ -35,15 +37,36 @@ public class ForceBot extends Player{
     scores[10] = ScoreGetter.largeStraight(roll);
     scores[11] = ScoreGetter.yahtzee(roll);
     scores[12] = ScoreGetter.chance(roll);
+    scores[13] = 2 * ScoreGetter.yahtzee(roll);
+    scores[14] = 2 * ScoreGetter.yahtzee(roll);
+    scores[15] = 2 * ScoreGetter.yahtzee(roll);
 
 
     int best = 0;
+    double bestScore = -100;
     
-    for(int i = 0; i<13; i++){
+    for(int i = 0; i<6; i++){
       if(!open[i])
         continue;
-      System.out.println((i+1) + ": "+(scores[i]-ExpectBot.baseExpect[i]));
-      if((scores[i]-ExpectBot.baseExpect[i])>(scores[best]-ExpectBot.baseExpect[best]))
+      
+      if((scores[i]-ForceHelper.expectedScores[i])>bestScore){
+        best = i;
+        bestScore = (scores[i]-ForceHelper.expectedScores[i]);
+      }
+    }
+    for(int i = 6; i<13; i++){
+      if(!open[i])
+        continue;
+      
+      if((scores[i]-ForceHelper.expectedScores[i])>bestScore){
+        best = i;
+        bestScore = (scores[i]-ForceHelper.expectedScores[i]);
+      }
+    }
+    for(int i = 13; i < 16; i++){
+      if(!open[i] || open[11] || scores[i] == 0)
+        continue;
+      if((scores[i]-ForceHelper.expectedScores[i])>bestScore);
         best = i;
     }
     return best;

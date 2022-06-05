@@ -7,7 +7,7 @@ import YahtzeeBot.app.game.*;
 public class Expect {
 
  
-  public static final double[] baseExpect = {2.1 + 1/21*(35), 4.2 + 2/21*(35), 6.3 + 3/21*(35), 8.4 + 4/21*(35), 10.5 + 5/21*(35), 12.6 + 6/21*(35),  3.9, 7.53, 13.35, 5.31, 15.417, 7.8};
+  public static final double[] baseExpect = {2 + 2.1 + 1/21*(35), 4 + 4.2 + 2/21*(35), 6 + 6.3 + 3/21*(35), 8 + 8.4 + 4/21*(35), 10 + 10.5 + 5/21*(35), 12 + 12.6 + 6/21*(35),  3.9, 7.53, 13.35, 5.31, 15.417, 7.8};
 
   public static int getExpect(int[] dice, int rollNum) {
     int[] roll = new int[5];
@@ -32,7 +32,7 @@ public class Expect {
     int best = 0;
     
     for(int i = 0; i<12; i++){
-      System.out.println((i+1) + ": "+(expect[i]-baseExpect[i]));
+      // System.out.println((i+1) + ": "+(expect[i]-baseExpect[i]));
       if((expect[i]-baseExpect[i])>(expect[best]-baseExpect[best]))
         best = i;
     }
