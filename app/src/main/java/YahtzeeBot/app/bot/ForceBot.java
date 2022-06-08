@@ -11,11 +11,9 @@ public class ForceBot extends Player{
   public void getKeepers(Roll dice, int rollNum){
     boolean[] keepers = ForceHelper.getBestKeepers(dice.getNums(), rollNum, this);
     for(int j = 0; j < dice.dice.length; j++){
-      System.out.print(keepers[j]+" ");
       if(keepers[j])
         dice.dice[j].keep = true;
     }
-    System.out.println();
   }
 
   public int getHand(Roll dice, int rollNum) {

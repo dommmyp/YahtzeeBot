@@ -32,7 +32,6 @@ public class Expect {
     int best = 0;
     
     for(int i = 0; i<12; i++){
-      // System.out.println((i+1) + ": "+(expect[i]-baseExpect[i]));
       if((expect[i]-baseExpect[i])>(expect[best]-baseExpect[best]))
         best = i;
     }

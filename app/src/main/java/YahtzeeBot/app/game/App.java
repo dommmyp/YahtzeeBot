@@ -38,7 +38,9 @@ public class App {
                         break;
                     case "force":
                         System.out.println("Brute Force bot selected");
-                        
+                        for(int i = 0; i < bots.length; i++){
+                            bots[i] = new ForceBot(i+1);
+                        }
                         break;
                     case "total":
                         System.out.println("Fully optimized bot selected");
