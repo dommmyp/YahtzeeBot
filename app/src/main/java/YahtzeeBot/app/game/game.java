@@ -1,3 +1,10 @@
+/*
+ * Class with helper functions for game logic
+ * i.e. getting values of rolls and assigning points to players
+ */
+
+
+
 package YahtzeeBot.app.game;
 
 import java.util.Scanner;

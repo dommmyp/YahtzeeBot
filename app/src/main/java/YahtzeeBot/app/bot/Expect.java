@@ -1,11 +1,15 @@
+/*
+ * Class to get expected values of rolls based on current contents
+ * Used for expectbot
+ */
+
+
 package YahtzeeBot.app.bot;
 
 import java.util.Arrays;
-
 import YahtzeeBot.app.game.*;
 
 public class Expect {
-
  
   public static final double[] baseExpect = {2 + 2.1 + 1/21*(35), 4 + 4.2 + 2/21*(35), 6 + 6.3 + 3/21*(35), 8 + 8.4 + 4/21*(35), 10 + 10.5 + 5/21*(35), 12 + 12.6 + 6/21*(35),  3.9, 7.53, 13.35, 5.31, 15.417, 7.8};
 
@@ -198,7 +202,7 @@ public class Expect {
 
     newProbs[4]=probs[0]*0.003+probs[1]*0.015+probs[2]*0.069+probs[3]*0.278+probs[4]*0.833;
 
-    newProbs[5]=probs[0]*0.0001+probs[1]*0.0008+probs[2]*0.0046+probs[3]*0.028+probs[4]*0.167+probs[5];
+    newProbs[5]=probs[1]*0.0008+probs[2]*0.0046+probs[3]*0.028+probs[4]*0.167+probs[5];
 
     return newProbs;
 

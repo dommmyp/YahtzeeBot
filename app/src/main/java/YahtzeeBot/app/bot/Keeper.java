@@ -1,3 +1,9 @@
+/*
+ * Class to determine which dice to keep depending
+ * on which roll is being gone for
+ * used for expectbot
+ */
+
 package YahtzeeBot.app.bot;
 
 public class Keeper {

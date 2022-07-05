@@ -1,4 +1,14 @@
+/*
+ * Class for expectbot
+ * Expectbot makes decisions based on mathematically calculated
+ * expectations for the final score of a roll based on the current contents
+ * compares these expectations to the base expectations of each roll option 
+ * and selects the largest difference
+ */
+
+
 package YahtzeeBot.app.bot;
+
 import YahtzeeBot.app.game.*;
 
 public class ExpectBot extends Player{

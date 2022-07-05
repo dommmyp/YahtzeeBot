@@ -1,8 +1,8 @@
-package YahtzeeBot.app.game;
-
 /*
-  Class for printing output to user
+* Class for printing output to user
 */
+
+package YahtzeeBot.app.game;
 
 public class Printer {
 

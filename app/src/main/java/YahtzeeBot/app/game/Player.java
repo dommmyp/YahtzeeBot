@@ -1,3 +1,8 @@
+/*
+ * Parent class for all types of players
+ * player types include person and forms of bots
+ */
+
 package YahtzeeBot.app.game;
 
 public class Player {

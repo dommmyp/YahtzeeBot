@@ -1,3 +1,10 @@
+/*
+ * Class for each die in a roll
+ * includes the value of the die, if the die is selected to be kept
+ * and a function to roll the die
+ */
+
+
 package YahtzeeBot.app.game;
 
 public class Die {

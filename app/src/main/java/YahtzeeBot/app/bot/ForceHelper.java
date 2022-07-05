@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class ForceHelper {
 
-  public static double[] expectedScores = { 2.1 + 1 / 21 * (35), 4.2 + 2 / 21 * (35), 6.3 + 3 / 21 * (35),
-      8.4 + 4 / 21 * (35), 10.5 + 5 / 21 * (35), 12.6 + 6 / 21 * (35), 14, 12, 10, 21, 28, 7.8, 26, 15.6, 15.6, 15.6 };
+  public static double[] expMultipliers;
+  public static double[] expIntercepts;
 
   public static boolean[] getBestKeepers(int[] roll, int rollNum, ForceBot fb) {
     boolean[] bestKeepers = { false, false, false, false, false };
@@ -120,33 +120,33 @@ public class ForceHelper {
     double maxDiff = -100;
 
     for (int i = 1; i <= 6; i++) {
-      if (ScoreGetter.multiples(roll, i) - expectedScores[i - 1] > maxDiff && fb.open[i - 1]) {
-        maxDiff = (ScoreGetter.multiples(roll, i) - expectedScores[i - 1]);
+      if (expMultipliers[i]*(ScoreGetter.multiples(roll, i) - expIntercepts[i - 1]) > maxDiff && fb.open[i - 1]) {
+        maxDiff = (ScoreGetter.multiples(roll, i) - expIntercepts[i - 1]);
       }
     }
-    if (ScoreGetter.threeOfAKind(roll) - expectedScores[6] > maxDiff && fb.open[6]) {
-      maxDiff = ScoreGetter.threeOfAKind(roll) - expectedScores[6];
+    if (expMultipliers[6]*(ScoreGetter.threeOfAKind(roll) - expIntercepts[6]) > maxDiff && fb.open[6]) {
+      maxDiff = ScoreGetter.threeOfAKind(roll) - expIntercepts[6];
     }
-    if (ScoreGetter.fourOfAKind(roll) - expectedScores[7] > maxDiff && fb.open[7]) {
-      maxDiff = ScoreGetter.fourOfAKind(roll) - expectedScores[7];
+    if (expMultipliers[7]*(ScoreGetter.fourOfAKind(roll) - expIntercepts[7]) > maxDiff && fb.open[7]) {
+      maxDiff = ScoreGetter.fourOfAKind(roll) - expIntercepts[7];
     }
-    if (ScoreGetter.fullHouse(roll) - expectedScores[8] > maxDiff && fb.open[8]) {
-      maxDiff = ScoreGetter.fullHouse(roll) - expectedScores[8];
+    if (expMultipliers[8]*(ScoreGetter.fullHouse(roll) - expIntercepts[8]) > maxDiff && fb.open[8]) {
+      maxDiff = ScoreGetter.fullHouse(roll) - expIntercepts[8];
     }
-    if (ScoreGetter.smallStraight(roll) - expectedScores[9] > maxDiff && fb.open[9]) {
-      maxDiff = ScoreGetter.smallStraight(roll) - expectedScores[9];
+    if (expMultipliers[9]*(ScoreGetter.smallStraight(roll) - expIntercepts[9]) > maxDiff && fb.open[9]) {
+      maxDiff = ScoreGetter.smallStraight(roll) - expIntercepts[9];
     }
-    if (ScoreGetter.largeStraight(roll) - expectedScores[10] > maxDiff && fb.open[10]) {
-      maxDiff = ScoreGetter.largeStraight(roll) - expectedScores[10];
+    if (expMultipliers[10]*(ScoreGetter.largeStraight(roll) - expIntercepts[10]) > maxDiff && fb.open[10]) {
+      maxDiff = ScoreGetter.largeStraight(roll) - expIntercepts[10];
     }
-    if (ScoreGetter.yahtzee(roll) - expectedScores[11] > maxDiff && fb.open[11]) {
-      maxDiff = ScoreGetter.yahtzee(roll) - expectedScores[11];
+    if (expMultipliers[11]*(ScoreGetter.yahtzee(roll) - expIntercepts[11]) > maxDiff && fb.open[11]) {
+      maxDiff = ScoreGetter.yahtzee(roll) - expIntercepts[11];
     }
-    if (2 * (ScoreGetter.yahtzee(roll) - expectedScores[13]) > maxDiff && !fb.open[11]) {
-      maxDiff = 2 * (ScoreGetter.yahtzee(roll) - expectedScores[11]);
+    if (expMultipliers[13]*(ScoreGetter.yahtzee(roll) - expIntercepts[13]) > maxDiff && !fb.open[11]) {
+      maxDiff = 2 * (ScoreGetter.yahtzee(roll) - expIntercepts[11]);
     }
-    if (ScoreGetter.chance(roll) - expectedScores[12] > maxDiff && fb.open[12]) {
-      maxDiff = ScoreGetter.chance(roll) - expectedScores[12];
+    if (expMultipliers[12]*(ScoreGetter.chance(roll) - expIntercepts[12]) > maxDiff && fb.open[12]) {
+      maxDiff = ScoreGetter.chance(roll) - expIntercepts[12];
     }
 
     return maxDiff;

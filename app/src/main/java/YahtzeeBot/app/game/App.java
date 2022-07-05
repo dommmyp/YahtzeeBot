@@ -1,5 +1,13 @@
+/* 
+ * Main class for YahtzeeBot
+ * prompts user to select options for the game and runs 
+ * the logic for the game.
+ */
+
 package YahtzeeBot.app.game;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 import YahtzeeBot.app.bot.*;
@@ -9,8 +17,8 @@ public class App {
         Scanner scnr = new Scanner(System.in);
         Printer.printWelcome();
         // FileStuff.writeData("/Users/dominicparolin/Documents/Code/Projects/YahtzeeBot/app/src/main/resources/BaseExpects.txt", ForceHelper.expectedScores);
-        double[] weights = FileStuff.readData("/Users/dominicparolin/Documents/Code/Projects/YahtzeeBot/app/src/main/resources/BaseExpects.txt");
-        ForceHelper.expectedScores = weights;
+        ForceHelper.expIntercepts = FileStuff.readData("app/src/main/resources/Intercepts.txt");
+        ForceHelper.expMultipliers = FileStuff.readData("app/src/main/resources/Multipliers.txt");
         while(true){
             System.out.print(Printer.ANSI_GREEN+"Game type [SIM, PLAY, TEST]: ");
             String gameType = scnr.nextLine();
@@ -135,7 +143,7 @@ public class App {
     }
 
     public static void simGame(Player[] bots){
-        
+        int[][] data = new int[100][16];
 
         int turnNum = 0;
         System.out.println();
@@ -157,13 +165,31 @@ public class App {
         }
         System.out.println();
         double totalScore = 0;
+        int index = 1;
+        String output = "\"p\",1,2,3,4,5,6,\"a\",\"b\",\"f\",\"s\",\"l\",\"y\",\"c\",\"m\",\"n\",\"o\",\"t\"\n";
         for(Player p : bots){
             totalScore += p.sumScores();
-            
+            output += index++;
+            output += ',';
+            for(int i = 0; i < 16; i++){
+                output += p.score[i];
+                output += ',';
+            }
+            output += p.sumScores();
+            output += '\n';
+
         }
         System.out.println("Average score of " + bots.length + " bots: " + (totalScore/bots.length));
 
-
+        try {
+            FileWriter w = new FileWriter("app/src/main/resources/Data.csv");
+              w.write(output);
+            w.close();
+            System.out.println("Successfully wrote to the file.");
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
 
     }
 

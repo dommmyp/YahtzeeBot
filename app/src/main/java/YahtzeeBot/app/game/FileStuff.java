@@ -1,8 +1,18 @@
+/* 
+ * Class for method to read and write info from files
+ * specifically info about weights for optimizing decisions
+ */
+
+
+
 package YahtzeeBot.app.game;
 
 
 import java.io.*;
 import java.util.Scanner;
+
+import YahtzeeBot.app.bot.ForceBot;
+import YahtzeeBot.app.bot.ForceHelper;
 
 public class FileStuff {
 
@@ -28,7 +38,7 @@ public class FileStuff {
       Scanner myReader = new Scanner(myObj);
       double[] input = new double[16];
       int index = 0;
-      while (myReader.hasNextLine()) {
+      while (index < 16) {
         String data = myReader.nextLine();
         input[index++] = Double.parseDouble(data);
       }

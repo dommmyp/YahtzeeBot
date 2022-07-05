@@ -1,3 +1,8 @@
+/*
+ * Chooses the roll with the highest score
+ * Not very good
+ */
+
 package YahtzeeBot.app.bot;
 
 import javax.xml.namespace.QName;

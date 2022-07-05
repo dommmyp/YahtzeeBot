@@ -1,3 +1,8 @@
+/*
+ * Class to represent a human player
+ * functions get command line input for all decisions
+ */
+
 package YahtzeeBot.app.game;
 
 import java.util.Scanner;

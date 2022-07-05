@@ -1,3 +1,10 @@
+/*
+ * Class for forcebot
+ * makes decisions based on brute forced averages for final score of a roll
+ * and compares that to the base expectation of a roll 
+ */
+
+
 package YahtzeeBot.app.bot;
 
 import YahtzeeBot.app.game.*;
@@ -10,10 +17,13 @@ public class ForceBot extends Player{
 
   public void getKeepers(Roll dice, int rollNum){
     boolean[] keepers = ForceHelper.getBestKeepers(dice.getNums(), rollNum, this);
+
     for(int j = 0; j < dice.dice.length; j++){
+      System.out.print(keepers[j]+" ");
       if(keepers[j])
         dice.dice[j].keep = true;
     }
+    System.out.println();
   }
 
   public int getHand(Roll dice, int rollNum) {
@@ -47,24 +57,24 @@ public class ForceBot extends Player{
       if(!open[i])
         continue;
       
-      if((scores[i]-ForceHelper.expectedScores[i])>bestScore){
+      if(ForceHelper.expMultipliers[i]*(scores[i]-ForceHelper.expIntercepts[i])>bestScore){
         best = i;
-        bestScore = (scores[i]-ForceHelper.expectedScores[i]);
+        bestScore = (scores[i]-ForceHelper.expIntercepts[i]);
       }
     }
     for(int i = 6; i<13; i++){
       if(!open[i])
         continue;
       
-      if((scores[i]-ForceHelper.expectedScores[i])>bestScore){
+      if(ForceHelper.expMultipliers[i]*(scores[i]-ForceHelper.expIntercepts[i])>bestScore){
         best = i;
-        bestScore = (scores[i]-ForceHelper.expectedScores[i]);
+        bestScore = (scores[i]-ForceHelper.expIntercepts[i]);
       }
     }
     for(int i = 13; i < 16; i++){
       if(!open[i] || open[11] || scores[i] == 0)
         continue;
-      if((scores[i]-ForceHelper.expectedScores[i])>bestScore);
+      if(ForceHelper.expMultipliers[i]*(scores[i]-ForceHelper.expIntercepts[i])>bestScore);
         best = i;
     }
     return best;
